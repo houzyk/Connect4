@@ -24,12 +24,12 @@ public class MyConnectFour {
       placeCounter('r', move);
       boolean hasWon = false;
       int count = 0;
-      // check horizontal
+      // // check horizontal
       for (int i = 0; i < board.length; i++) {
         for (int j = 0; j < board[i].length; j++) {
           if (board[i][j] == 'r') {
             count = count + 1;
-            if (count > 4) {
+            if (count >= 4) {
               hasWon = true;
             }
           } else {
@@ -38,13 +38,14 @@ public class MyConnectFour {
         }
 
       }
+
       // check vertical
       count = 0;
       for (int i = 0; i < board[0].length; i++) {
         for (int j = 0; j < board.length; j++) {
           if (board[j][i] == 'r') {
             count = count + 1;
-            if (count > 4) {
+            if (count >= 4) {
               hasWon = true;
             }
           } else {
@@ -53,6 +54,70 @@ public class MyConnectFour {
         }
 
       }
+
+      // check diagonal A1
+      count = 0;
+      for (int i = 0; i < 3; i++) {
+        for (int j = 2; j >= 0; j--) {
+          for (int k = 0; k < 4; k++) {
+            if (board[j + k][i + k] == 'r') {
+              count = count + 1;
+              if (count >= 4) hasWon = true;
+            } else {
+              count = 0;
+            }
+          }
+        }
+      }
+
+      // check diagonal A2
+      count = 0;
+      for (int i = 0; i < 3; i++) {
+        for (int j = 5; j >= 3; j--) {
+          for (int k = 0; k < 4; k++) {
+            if (board[j - k][i + k] == 'r') {
+              count = count + 1;
+              if (count >= 4) hasWon = true;
+            } else {
+              count = 0;
+            }
+          }
+        }
+      }
+
+      // check diagonal B1
+      count = 0;
+      for (int i = 6; i > 3; i--) {
+        for (int j = 2; j >= 0; j--) {
+          for (int k = 0; k < 4; k++) {
+            if (board[j + k][i - k] == 'r') {
+              count = count + 1;
+              if (count >= 4)
+                hasWon = true;
+            } else {
+              count = 0;
+            }
+          }
+        }
+      }
+
+      // check diagonal B2
+      count = 0;
+      for (int i = 6; i > 3; i--) {
+        for (int j = 5; j >= 3; j--) {
+          for (int k = 0; k < 4; k++) {
+            if (board[j - k][i - k] == 'r') {
+              count = count + 1;
+              if (count >= 4)
+                hasWon = true;
+            } else {
+              count = 0;
+            }
+          }
+        }
+      }
+
+
       printBoard();
       if (hasWon) {
         win = true;
