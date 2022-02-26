@@ -36,7 +36,6 @@ public class MyConnectFour {
             count = 0;
           }
         }
-
       }
 
       // check vertical
@@ -52,7 +51,6 @@ public class MyConnectFour {
             count = 0;
           }
         }
-
       }
 
       // check diagonal A1
