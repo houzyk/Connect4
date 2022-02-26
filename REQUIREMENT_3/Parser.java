@@ -16,19 +16,4 @@ public class Parser {
   private void initializeValidInputs (int columns) {
     for (int i = 1; i <= columns; i++) validInputs.add(Integer.toString(i));
   }
-
-  public 
-
-  public String getUserInput() {
-    String toReturn;
-    try {
-      toReturn = input.readLine();
-      Parser p = new Parser(7);
-      if (p.sanitizeInput(toReturn))
-        return toReturn;
-    } catch (Exception e) {
-      return getUserInput();
-    }
-    return getUserInput();
-  }
 }

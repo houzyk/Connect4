@@ -1,99 +1,45 @@
 package REQUIREMENT_3;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 public class MyConnectFour {
 
-  private BufferedReader input;
-  private char[][] board;
+  private boolean win = false;
+  private Player winner;
 
   public MyConnectFour() {
-    board = new char[6][7];
-    input = new BufferedReader(new InputStreamReader(System.in));
     playGame();
   }
 
   private void playGame() {
-    printBoard();
-    boolean win = false;
-    while (!win) {
-      // player 1
-      String userInput = getUserInput();
-      int move = Integer.parseInt(userInput);
-      placeCounter('r', move);
-      boolean hasWon = false;
-      int count = 0;
-      // // check horizontal
-      for (int i = 0; i < board.length; i++) {
-        for (int j = 0; j < board[i].length; j++) {
-          if (board[i][j] == 'r') {
-            count = count + 1;
-            if (count >= 4) {
-              hasWon = true;
-            }
-          } else {
-            count = 0;
-          }
-        }
-      }
+    HumanPlayer player1 = new HumanPlayer("Player 1");
+    ComputerPlayer computerPlayer = new ComputerPlayer();
+    Board board = new Board(6, 7);
+    board.printBoard();
 
+    while (!this.win) {
 
-      printBoard();
-      if (hasWon) {
-        win = true;
+      String playerMove = player1.move();
+      board.placeCounter('r', Integer.parseInt(playerMove));
+      board.printBoard();
+      boolean player1Status = GameStatus.checkWin(board.getBoard(), 'r');
+      player1.setStatus(player1Status);
+
+      if (player1.getStatus()) {
+        this.winner = player1;
+        this.win = true;
       } else {
-        // player 2
-        userInput = getUserInput();
-        move = Integer.parseInt(userInput);
-        placeCounter('y', move);
-        hasWon = false;
-        count = 0;
-        // check horizontal
-        for (int i = 0; i < board.length; i++) {
-          for (int j = 0; j < board[i].length; j++) {
-            if (board[i][j] == 'y') {
-              count = count + 1;
-              if (count >= 4) {
-                hasWon = true;
-              }
-            } else {
-              count = 0;
-            }
-          }
-        }
-        // check vertical
-        count = 0;
-        for (int i = 0; i < board[0].length; i++) {
-          for (int j = 0; j < board.length; j++) {
-            if (board[j][i] == 'y') {
-              count = count + 1;
-              if (count >= 4) {
-                hasWon = true;
-              }
-            } else {
-              count = 0;
-            }
-          }
-        }
-        printBoard();
-        if (hasWon) {
-          win = true;
+
+        String computerMove = computerPlayer.move();
+        board.placeCounter('y', Integer.parseInt(computerMove));
+        board.printBoard();
+        boolean computerPlayerStatus = GameStatus.checkWin(board.getBoard(), 'y');
+        computerPlayer.setStatus(computerPlayerStatus);
+
+        if (computerPlayer.getStatus()) {
+          this.winner = computerPlayer;
+          this.win = true;
         }
       }
     }
-    System.out.println("You Have Won!!!");
-  }
-
-  private String getUserInput() {
-    String toReturn;
-    try {
-      toReturn = input.readLine();
-      Parser p = new Parser(7);
-      if (p.sanitizeInput(toReturn)) return toReturn;
-    } catch (Exception e) {
-      return getUserInput();
-    }
-    return getUserInput();
+    Interface.printWinningMessage(this.winner.getTitle());
   }
 }

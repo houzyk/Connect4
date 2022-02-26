@@ -2,7 +2,7 @@ package REQUIREMENT_3;
 
 public abstract class GameStatus {
 
-  public boolean checkWin(char[][] board, char color) {
+  public static boolean checkWin(char[][] board, char color) {
     return checkHorizontalWin(board, color) ||
     checkVerticalWin(board, color) ||
     checkDiagonalWin(board, color);

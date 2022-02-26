@@ -7,7 +7,8 @@ public class ComputerPlayer extends Player {
   }
 
   @Override
-  public void move() {
-
+  public String move () {
+    int move = (int) Math.floor((Math.random()*6) + 1);
+    return String.valueOf(move);
   }
 }

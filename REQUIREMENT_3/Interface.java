@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public abstract class Interface {
+  
   private static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
   public static void welcomeUser () {
@@ -18,7 +19,7 @@ public abstract class Interface {
   public static String getUserInput() {
     String toReturn;
     try {
-      toReturn = this.input.readLine();
+      toReturn = input.readLine();
       Parser p = new Parser(7);
       if (p.sanitizeInput(toReturn))
         return toReturn;
