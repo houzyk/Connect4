@@ -25,6 +25,19 @@ public class Board {
     System.out.println("  1   2   3   4   5   6   7");
   }
 
+  public boolean isColumnFull (int position) {
+    int count = 0;
+    for (int i = board.length - 1; i >= 0; i--) {
+      if (board[i][position - 1] == 'y' || board[i][position - 1] == 'r') {
+        count++;
+      }
+    }
+    if (count >= 6) {
+      return true;
+    }
+    return false;
+  }
+
   public void placeCounter (char player, int position) {
     boolean placed = false;
     if (player == 'r') {

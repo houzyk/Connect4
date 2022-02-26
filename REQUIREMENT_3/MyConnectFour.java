@@ -18,6 +18,10 @@ public class MyConnectFour {
     while (!this.win) {
 
       String playerMove = player1.move();
+      while (board.isColumnFull(Integer.parseInt(playerMove))) {
+        System.out.println("The Column is full, Try Again!");
+        playerMove = player1.move();
+      }
       board.placeCounter('r', Integer.parseInt(playerMove));
       board.printBoard();
       boolean player1Status = GameStatus.checkWin(board.getBoard(), 'r');
@@ -29,6 +33,9 @@ public class MyConnectFour {
       } else {
 
         String computerMove = computerPlayer.move();
+        while (board.isColumnFull(Integer.parseInt(computerMove))) {
+          computerMove = computerPlayer.move();
+        }
         board.placeCounter('y', Integer.parseInt(computerMove));
         board.printBoard();
         boolean computerPlayerStatus = GameStatus.checkWin(board.getBoard(), 'y');
