@@ -7,6 +7,8 @@ public class Board {
     this.board = new char[row][column];
   }
 
+  public char[][] getBoard () { return this.board; }
+
   public void printBoard() {
     for (int i = 0; i < this.board.length; i++) {
       for (int j = 0; j < this.board[i].length; j++) {
@@ -29,7 +31,7 @@ public class Board {
       for (int i = board.length - 1; i >= 0; i--) {
         if (!placed) {
           if (board[i][position - 1] == 'y') {
-            // skip
+            // todo
           } else if (board[i][position - 1] != 'r') {
             board[i][position - 1] = 'r';
             placed = true;
@@ -40,7 +42,7 @@ public class Board {
       for (int i = board.length - 1; i >= 0; i--) {
         if (!placed) {
           if (board[i][position - 1] == 'r') {
-            // skip
+            // todo
           } else if (board[i][position - 1] != 'y') {
             board[i][position - 1] = 'y';
             placed = true;

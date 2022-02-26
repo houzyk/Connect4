@@ -13,7 +13,7 @@ public abstract class GameStatus {
     for (int i = 0; i < board.length; i++) {
       for (int j = 0; j < board[i].length; j++) {
         if (board[i][j] == color) {
-          count = count + 1;
+          count++;
           if (count >= 4) return true;
         } else {
           count = 0;
@@ -28,7 +28,7 @@ public abstract class GameStatus {
     for (int i = 0; i < board[0].length; i++) {
       for (int j = 0; j < board.length; j++) {
         if (board[j][i] == color) {
-          count = count + 1;
+          count++;
           if (count >= 4) return true;
         } else {
           count = 0;
@@ -49,7 +49,7 @@ public abstract class GameStatus {
       for (int j = 5; j >= 3; j--) {
         for (int k = 0; k < 4; k++) {
           if (board[j - k][i + k] == color) {
-            count = count + 1;
+            count++;
             if (count >= 4) return true;
           } else {
             count = 0;
@@ -62,7 +62,7 @@ public abstract class GameStatus {
       for (int j = 2; j >= 0; j--) {
         for (int k = 0; k < 4; k++) {
           if (board[j + k][i - k] == color) {
-            count = count + 1;
+            count++;
             if (count >= 4) return true;
           } else {
             count = 0;
@@ -79,9 +79,8 @@ public abstract class GameStatus {
       for (int j = 2; j >= 0; j--) {
         for (int k = 0; k < 4; k++) {
           if (board[j + k][i + k] == color) {
-            count = count + 1;
-            if (count >= 4)
-              return true;
+            count++;
+            if (count >= 4) return true;
           } else {
             count = 0;
           }
@@ -93,9 +92,8 @@ public abstract class GameStatus {
       for (int j = 5; j >= 3; j--) {
         for (int k = 0; k < 4; k++) {
           if (board[j - k][i - k] == color) {
-            count = count + 1;
-            if (count >= 4)
-              return true;
+            count++;
+            if (count >= 4) return true;
           } else {
             count = 0;
           }
