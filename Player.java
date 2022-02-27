@@ -1,4 +1,3 @@
-package REQUIREMENT_3;
 public class Player {
   private String title;
   private boolean status = false;

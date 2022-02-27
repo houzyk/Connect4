@@ -1,5 +1,3 @@
-package REQUIREMENT_3;
-
 public class Board {
   private char[][] board;
 
@@ -44,7 +42,7 @@ public class Board {
       for (int i = board.length - 1; i >= 0; i--) {
         if (!placed) {
           if (board[i][position - 1] == 'y') {
-            // todo
+            // skip
           } else if (board[i][position - 1] != 'r') {
             board[i][position - 1] = 'r';
             placed = true;
@@ -55,7 +53,7 @@ public class Board {
       for (int i = board.length - 1; i >= 0; i--) {
         if (!placed) {
           if (board[i][position - 1] == 'r') {
-            // todo
+            // skip
           } else if (board[i][position - 1] != 'y') {
             board[i][position - 1] = 'y';
             placed = true;

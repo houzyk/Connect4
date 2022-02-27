@@ -1,5 +1,3 @@
-package REQUIREMENT_3;
-
 public class MyConnectFour {
 
   private boolean win = false;

@@ -1,10 +1,8 @@
-package REQUIREMENT_3;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public abstract class Interface {
-  
+
   private static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
   public static void welcomeUser () {

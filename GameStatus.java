@@ -1,5 +1,3 @@
-package REQUIREMENT_3;
-
 public abstract class GameStatus {
 
   public static boolean checkWin(char[][] board, char color) {
