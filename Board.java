@@ -24,15 +24,13 @@ public class Board {
   }
 
   public boolean isColumnFull (int position) {
-    int count = 0;
+    int pawnCount = 0;
     for (int i = board.length - 1; i >= 0; i--) {
       if (board[i][position - 1] == 'y' || board[i][position - 1] == 'r') {
-        count++;
+        pawnCount++;
       }
     }
-    if (count >= 6) {
-      return true;
-    }
+    if (pawnCount >= 6) return true;
     return false;
   }
 

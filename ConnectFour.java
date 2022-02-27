@@ -26,16 +26,14 @@ public class ConnectFour {
     String playerMove = player.move();
 
     while (this.board.isColumnFull(Integer.parseInt(playerMove))) {
-      if (player instanceof HumanPlayer) {
-        System.out.println("The Column is full, Try Again!");
-      }
+      if (player instanceof HumanPlayer) Interface.printColumnFullMessage();
       playerMove = player.move();
     }
 
     this.board.placeCounter(color, Integer.parseInt(playerMove));
     this.board.printBoard();
 
-    boolean playerStatus = GameStatus.checkWin(this.board.getBoard(), 'r');
+    boolean playerStatus = GameStatus.checkWin(this.board.getBoard(), color);
     player.setStatus(playerStatus);
 
     if (player.getStatus()) {

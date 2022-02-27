@@ -14,13 +14,16 @@ public abstract class Interface {
     System.out.println(player + " has won!!!");
   }
 
+  public static void printColumnFullMessage () {
+    System.out.println("The Column is full, Please try Again!");
+  }
+
   public static String getUserInput() {
-    String toReturn;
+    String playerMove;
     try {
-      toReturn = input.readLine();
-      Parser p = new Parser(7);
-      if (p.sanitizeInput(toReturn))
-        return toReturn;
+      playerMove = input.readLine();
+      Parser parser = new Parser(7);
+      if (parser.sanitizeInput(playerMove)) return playerMove;
     } catch (Exception e) {
       return getUserInput();
     }
