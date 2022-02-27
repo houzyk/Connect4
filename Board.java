@@ -36,27 +36,10 @@ public class Board {
 
   public void placeCounter (char player, int position) {
     boolean placed = false;
-    if (player == 'r') {
-      for (int i = board.length - 1; i >= 0; i--) {
-        if (!placed) {
-          if (board[i][position - 1] == 'y') {
-            // skip
-          } else if (board[i][position - 1] != 'r') {
-            board[i][position - 1] = 'r';
-            placed = true;
-          }
-        }
-      }
-    } else {
-      for (int i = board.length - 1; i >= 0; i--) {
-        if (!placed) {
-          if (board[i][position - 1] == 'r') {
-            // skip
-          } else if (board[i][position - 1] != 'y') {
-            board[i][position - 1] = 'y';
-            placed = true;
-          }
-        }
+    for (int i = board.length - 1; i >= 0; i--) {
+      if (!placed && board[i][position - 1] != color) {
+        board[i][position - 1] = color;
+        placed = true;
       }
     }
   }
