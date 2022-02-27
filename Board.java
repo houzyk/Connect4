@@ -1,8 +1,10 @@
 public class Board {
   private char[][] board;
+  private int boardArea;
 
   public Board (int row, int column) {
     this.board = new char[row][column];
+    this.boardArea = row * column;
   }
 
   public char[][] getBoard () { return this.board; }
@@ -34,30 +36,26 @@ public class Board {
     return false;
   }
 
-  public void placeCounter (char player, int position) {
+  public void placeCounter (char color, int position) {
     boolean placed = false;
-    if (player == 'r') {
-      for (int i = board.length - 1; i >= 0; i--) {
-        if (!placed) {
-          if (board[i][position - 1] == 'y') {
-            // skip
-          } else if (board[i][position - 1] != 'r') {
-            board[i][position - 1] = 'r';
-            placed = true;
-          }
-        }
-      }
-    } else {
-      for (int i = board.length - 1; i >= 0; i--) {
-        if (!placed) {
-          if (board[i][position - 1] == 'r') {
-            // skip
-          } else if (board[i][position - 1] != 'y') {
-            board[i][position - 1] = 'y';
-            placed = true;
-          }
-        }
+    for (int i = board.length - 1; i >= 0; i--) {
+      if (!placed &&
+          board[i][position - 1] == '\0' &&
+          board[i][position - 1] != color) {
+        board[i][position - 1] = color;
+        placed = true;
       }
     }
+  }
+
+  public boolean isBoardFull() {
+    int pawnCount = 0;
+    for (int i = 0; i < this.board.length; i++) {
+      for (int j = 0; j < this.board[i].length; j++) {
+        if (this.board[i][j] != '\0') pawnCount++;
+      }
+    }
+    if (pawnCount >= this.boardArea) return true;
+    return false;
   }
 }

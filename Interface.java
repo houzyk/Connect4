@@ -18,6 +18,10 @@ public abstract class Interface {
     System.out.println("The Column is full, Please try Again!");
   }
 
+  public static void printDrawMessage() {
+    System.out.println("It's a draw!");
+  }
+
   public static String getUserInput() {
     String playerMove;
     try {
